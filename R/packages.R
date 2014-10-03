@@ -198,18 +198,18 @@ pkg <- c(
     ) ## END pkg
 
 ## Attempts to install missing packages ----------------------------------------
-miss.pkg <- pkg[! pkg %in% system.file()]
-if( length(miss.pkg) > 0 ) {
+missing <- lapply(pkg, require, character.only=TRUE) == FALSE
+install <- pkg[missing]
+if( length(install) > 0 ) {
     print( "Installing the following packages:" )
-    print( paste("  - ", miss.pkg) )
+    print( paste("  - ", install) )
     print( "This may take a few minutes to complete." )
-    install.packages( miss.pkg )
+    install.packages( install )
 }
 
 ## Loads packages, or errors out and stops ------------------------------------
-miss.pkg <- pkg[! pkg %in% system.file()]
-if(length(miss.pkg) == 0 ) {
-    lapply(packages, library, character.only=T)
-} else {
+missing <- lapply(pkg, require, character.only=TRUE) == FALSE
+problems <- pkg[missing]
+if(length(problems) >0 ) {
     stop("Unable to install all needed packages.")
 }
