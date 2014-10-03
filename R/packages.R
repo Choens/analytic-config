@@ -212,4 +212,6 @@ missing <- lapply(pkg, require, character.only=TRUE) == FALSE
 problems <- pkg[missing]
 if(length(problems) >0 ) {
     stop("Unable to install all needed packages.")
+} else {
+    print("Congrats. All packages installed. Have Fun!")
 }
