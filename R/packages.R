@@ -22,7 +22,7 @@
 ## 
 ## =============================================================================
 
-pkg <- c(
+pkgs <- c(
     ## -------------------------------------------------------------------------
     ## R-Recommended - packages that are recommended by the upstream R core 
     ## team as part of a complete R installation.
@@ -195,23 +195,22 @@ pkg <- c(
            ## are independence of a particular index/date/time class and
            ## consistency with ts and base R by providing methods to extend
            ## standard generics.
-    ) ## END pkg
+    ) ## END pkgs
 
 ## Attempts to install missing packages ----------------------------------------
-missing <- lapply(pkg, require, character.only=TRUE) == FALSE
-install <- pkg[missing]
-if( length(install) > 0 ) {
+library(utils)
+miss.pkgs <- pkgs[! pkgs %in% system.file()]
+if( length(miss.pkgs) > 0 ) {
     print( "Installing the following packages:" )
-    print( paste("  - ", install) )
+    print( paste("  - ", miss.pkgs) )
     print( "This may take a few minutes to complete." )
-    install.packages( install )
+    install.packages( miss.pkgs )
 }
 
 ## Loads packages, or errors out and stops ------------------------------------
-missing <- lapply(pkg, require, character.only=TRUE) == FALSE
-problems <- pkg[missing]
-if(length(problems) >0 ) {
-    stop("Unable to install all needed packages.")
+miss.pkgs <- pkgs[! pkgs %in% system.file()]
+if(length(miss.pkgs) == 0 ) {
+    lapply(pkgs, library, character.only=T)
 } else {
-    print("Congrats. All packages installed. Have Fun!")
+    stop("Unable to install all needed packages.")
 }
