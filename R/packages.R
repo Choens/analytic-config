@@ -8,6 +8,16 @@
 
 
 ## =============================================================================
+## UPDATE PACKAGES
+##
+## Before trying to install any additional packages from CRAN, make sure
+## everything that is already installed is up to date.
+##
+## =============================================================================
+
+update.packages()
+
+## =============================================================================
 ## LOAD AND ATTACH ADD ON PACKAGES
 ##
 ## - Uncomment required packages. Feel free to add packages not included here.
@@ -204,7 +214,7 @@ if( length(miss.pkgs) > 0 ) {
     print( "Installing the following packages:" )
     print( paste("  - ", miss.pkgs) )
     print( "This may take a few minutes to complete." )
-    install.packages( miss.pkgs )
+    install.packages( miss.pkgs, dependencies = TRUE )
 }
 
 ## Loads packages, or errors out and stops ------------------------------------
