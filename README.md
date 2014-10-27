@@ -16,10 +16,12 @@ appreciated.
 
 - packages.R:
 
-    Downlaods, installs and tests a selection of popular
-    packages. Includes the packages recommended by R-Core and popular
-    packages such as those from Hadley Wickham, etc.
+    Downloads and installs a curated list of popular R
+    packages. Includes the packages recommended by the R Core Team
+    (R-Recommended) andother popular packages.
 
     This collection is a (slowly) moving target. For example, knitr
     has been replaced by the rmarkdown package which has superseded
-    it.
+    it. This list will not focus on backwards compatibility. Rather,
+    it will focus on the packages that are currently being used in the
+    R community.
