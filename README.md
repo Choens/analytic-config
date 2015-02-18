@@ -1,8 +1,3 @@
----
-title: README
-author: Andy Choens
----
-
 # Project Description
 
 Collection of installation scripts, configuration scripts and other
